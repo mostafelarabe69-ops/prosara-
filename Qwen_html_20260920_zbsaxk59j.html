@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Mohamed — Digital Creative Freelancer</title>
+    <meta name="description" content="Sara Mohamed - مصممة جرافيك ومونتيرة فيديو ومستندات احترافية">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #d4af37;
+            --accent-light: #f4d03f;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-light: #f1f5f9;
+            --gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid var(--text);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text);
+            color: var(--primary);
+        }
+
+        /* ===== Sections General ===== */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 span {
+            color: var(--accent);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* ===== Services Section ===== */
+        .services {
+            background: var(--secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--primary);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(212,175,55,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card ul li {
+            padding: 8px 0;
+            color: var(--text);
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* ===== Portfolio Section ===== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: var(--secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, var(--secondary), transparent);
+        }
+
+        .portfolio-content {
+            padding: 30px;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: rgba(212,175,55,0.2);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .portfolio-link:hover {
+            color: var(--accent-light);
+        }
+
+        /* ===== Tools Section ===== */
+        .tools {
+            background: var(--secondary);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: var(--primary);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .tool-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== Audience Section ===== */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .audience-item {
+            background: var(--secondary);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .audience-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .audience-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .audience-item h4 {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            background: var(--secondary);
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .contact-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-link .icon {
+            font-size: 1.3rem;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--primary);
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+
+        footer p {
+            color: var(--text-muted);
+        }
+
+        footer .logo {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ===== Animations ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                padding: 40px 20px;
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Sara Mohamed</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+            <li><a href="#portfolio" data-ar="أعمالي" data-en="Portfolio">أعمالي</a></li>
+            <li><a href="#tools" data-ar="الأدوات" data-en="Tools">الأدوات</a></li>
+            <li><a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+            <li><button class="lang-toggle" id="langToggle">English</button></li>
+            <li><a href="#contact" class="cta-btn" data-ar="ابدأ مشروع" data-en="Start a project">ابدأ مشروع</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle" data-ar="مصممة إبداعية رقمية" data-en="Digital Creative Freelancer">مصممة إبداعية رقمية</p>
+            <h1>
+                <span data-ar="سارة محمد" data-en="Sara Mohamed">سارة محمد</span>
+                <span data-ar="تصميم، فيديو، ومستندات — في مكان واحد" data-en="Design, video, and documents — done in one place">تصميم، فيديو، ومستندات — في مكان واحد</span>
+            </h1>
+            <p class="hero-description" data-ar="أعمل مع الأفراد، رواد الأعمال، الشركات الناشئة والشركات على الهوية البصرية، تصميم السوشيال ميديا، الفيديو والموشن جرافيك، وتنسيق المستندات الاحترافي." data-en="I work with individuals, entrepreneurs, startups, and companies on visual identity, social media design, motion and AI-powered video, and clean document formatting.">أعمل مع الأفراد، رواد الأعمال، الشركات الناشئة والشركات على الهوية البصرية، تصميم السوشيال ميديا، الفيديو والموشن جرافيك، وتنسيق المستندات الاحترافي.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn-primary" data-ar="شوفي الأعمال" data-en="See the work">شوفي الأعمال</a>
+                <a href="#contact" class="btn-secondary" data-ar="ابدأ مشروع" data-en="Start a project">ابدأ مشروع</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <h2 data-ar="ثلاث خطوط <span>عمل</span>" data-en="Three lines of <span>work</span>">ثلاث خطوط <span>عمل</span></h2>
+            <p data-ar="خدمات متكاملة تلبي جميع احتياجاتك الإبداعية" data-en="Integrated services to meet all your creative needs">خدمات متكاملة تلبي جميع احتياجاتك الإبداعية</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🎨</div>
+                <h3 data-ar="التصميم" data-en="Design">التصميم</h3>
+                <p data-ar="هوية بصرية وجرافيك" data-en="Brand & graphics">هوية بصرية وجرافيك</p>
+                <ul>
+                    <li data-ar="تصميم الهوية البصرية" data-en="Visual identity design">تصميم الهوية البصرية</li>
+                    <li data-ar="تصميم السوشيال ميديا" data-en="Social media design">تصميم السوشيال ميديا</li>
+                    <li data-ar="تصميم البوسترات" data-en="Poster design">تصميم البوسترات</li>
+                    <li data-ar="تصميم السيرة الذاتية" data-en="CV design">تصميم السيرة الذاتية</li>
+                    <li data-ar="تصميم العروض التقديمية" data-en="Presentation design">تصميم العروض التقديمية</li>
+                </ul>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🎬</div>
+                <h3 data-ar="الفيديو والموشن" data-en="Video & motion">الفيديو والموشن</h3>
+                <p data-ar="صور متحركة" data-en="Moving pictures">صور متحركة</p>
+                <ul>
+                    <li data-ar="فيديوهات أنيميشن - حوالي 4 دقائق" data-en="Animation videos — around 4 minutes">فيديوهات أنيميشن - حوالي 4 دقائق</li>
+                    <li data-ar="موشن جرافيك" data-en="Motion graphics">موشن جرافيك</li>
+                    <li data-ar="إنشاء فيديو بالذكاء الاصطناعي" data-en="AI-powered video creation">إنشاء فيديو بالذكاء الاصطناعي</li>
+                    <li data-ar="مونتاج الفيديو" data-en="Video editing">مونتاج الفيديو</li>
+                </ul>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📄</div>
+                <h3 data-ar="المستندات" data-en="Documents">المستندات</h3>
+                <p data-ar="ملفات، مرتبة" data-en="Files, sorted">ملفات، مرتبة</p>
+                <ul>
+                    <li data-ar="كتابة وتصميم السيرة الذاتية" data-en="CV writing & design">كتابة وتصميم السيرة الذاتية</li>
+                    <li data-ar="تحويل PDF إلى Word" data-en="PDF to Word conversion">تحويل PDF إلى Word</li>
+                    <li data-ar="تنسيق مستندات Word" data-en="Word document formatting">تنسيق مستندات Word</li>
+                    <li data-ar="تنسيق العروض التقديمية" data-en="Presentation formatting">تنسيق العروض التقديمية</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header fade-in">
+            <h2 data-ar="مختارات من <span>الأعمال</span>" data-en="Selected <span>portfolio</span>">مختارات من <span>الأعمال</span></h2>
+            <p data-ar="ست قطع من أعمال حقيقية" data-en="Six pieces of real work">ست قطع من أعمال حقيقية</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">☕</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">01 — Branding</span>
+                    <h3 data-ar="Super Smooth Coffee" data-en="Super Smooth Coffee">Super Smooth Coffee</h3>
+                    <p data-ar="هوية بصرية كاملة وإعلان لعلامة قهوة — لوجو على المنتج، تخطيط إعلان، ولقطة منتج مطابقة." data-en="Full visual identity and advertising for a coffee brand — logo on product, ad layout, and a matching product shot.">هوية بصرية كاملة وإعلان لعلامة قهوة — لوجو على المنتج، تخطيط إعلان، ولقطة منتج مطابقة.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image"></div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">02 — Video · 1:48</span>
+                    <h3 data-ar="Journey of the Bean" data-en="Journey of the Bean">Journey of the Bean</h3>
+                    <p data-ar="ريل عمودي لعلامة Super Smooth Coffee، يتبع حبة القهوة من المزرعة إلى الكوب — مكتوب، مقصوص، ومترجم للسوشيال." data-en="A vertical brand reel for Super Smooth Coffee, following the bean from farm to cup — written, cut, and captioned for social.">ريل عمودي لعلامة Super Smooth Coffee، يتبع حبة القهوة من المزرعة إلى الكوب — مكتوب، مقصوص، ومترجم للسوشيال.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">📊</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">03 — Infographic deck</span>
+                    <h3 data-ar="The Nurturing Ecosystem" data-en="The Nurturing Ecosystem">The Nurturing Ecosystem</h3>
+                    <p data-ar="عرض توضيحي من 10 شرائح يشرح فسيولوجيا الحمل كنظام حي، مصمم للجمهور العام." data-en="A 10-slide illustrated deck explaining pregnancy physiology as a living ecosystem, built for a general audience.">عرض توضيحي من 10 شرائح يشرح فسيولوجيا الحمل كنظام حي، مصمم للجمهور العام.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">🎓</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">04 — Academic deck</span>
+                    <h3 data-ar="Nutrition During Pregnancy" data-en="Nutrition During Pregnancy">Nutrition During Pregnancy</h3>
+                    <p data-ar="إرشادات سريرية حول تغذية الحمل، بناءً على coursework من جامعة المنوفية — بطاقات بيانات على تخطيط أكاديمي هادئ." data-en="Clinical guidelines on pregnancy nutrition, based on Menoufia University coursework — data cards over a calm, academic layout.">إرشادات سريرية حول تغذية الحمل، بناءً على coursework من جامعة المنوفية — بطاقات بيانات على تخطيط أكاديمي هادئ.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">🏥</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">05 — Medical deck</span>
+                    <h3 data-ar="Clinical Nutrition & Dietetics" data-en="Clinical Nutrition & Dietetics">Clinical Nutrition & Dietetics</h3>
+                    <p data-ar="ملخص قائم على الأدلة للطاقم الطبي حول جودة النظام الغذائي ونتائج المرضى، مقدم من سارة محمد." data-en="An evidence-based briefing for medical staff on diet quality and patient outcomes, presented by Sara Mohamed.">ملخص قائم على الأدلة للطاقم الطبي حول جودة النظام الغذائي ونتائج المرضى، مقدم من سارة محمد.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image"></div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">06 — Channel & video</span>
+                    <h3 data-ar="Nutrition in Hospital" data-en="Nutrition in Hospital">Nutrition in Hospital</h3>
+                    <p data-ar="قناة يوتيوب تعليمية عن التغذية في المستشفى، بما في ذلك فيديو تغذية ما بعد الجراحة مدته 7:29." data-en="An educational YouTube channel on hospital nutrition, including a 7:29 post-surgery nutrition video.">قناة يوتيوب تعليمية عن التغذية في المستشفى، بما في ذلك فيديو تغذية ما بعد الجراحة مدته 7:29.</p>
+                    <a href="https://youtu.be/MGQ3kE4M2HY?si=81hT2TBFr3uih3sV" target="_blank" class="portfolio-link" data-ar="شاهديه على يوتيوب ←" data-en="Watch it on YouTube →">شاهديه على يوتيوب ←</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="section-header fade-in">
+            <h2 data-ar="الأدوات والبرامج" data-en="Tools & software">الأدوات والبرامج</h2>
+            <p data-ar="ما أعمل به" data-en="What I work in">ما أعمل به</p>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card fade-in">
+                <div class="tool-icon">🎬</div>
+                <h4>CapCut</h4>
+                <p data-ar="مونتاج وإنتاج الفيديو" data-en="Video editing and production">مونتاج وإنتاج الفيديو</p>
+            </div>
+            <div class="tool-card fade-in">
+                <div class="tool-icon">📝</div>
+                <h4>Microsoft Word</h4>
+                <p data-ar="التنسيق، التحويل، وتصميم السيرة الذاتية" data-en="Formatting, conversion, and CV layout">التنسيق، التحويل، وتصميم السيرة الذاتية</p>
+            </div>
+            <div class="tool-card fade-in">
+                <div class="tool-icon">📊</div>
+                <h4>Microsoft PowerPoint</h4>
+                <p data-ar="تصميم وتنسيق العروض التقديمية" data-en="Presentation design and formatting">تصميم وتنسيق العروض التقديمية</p>
+            </div>
+            <div class="tool-card fade-in">
+                <div class="tool-icon">🎨</div>
+                <h4>Canva</h4>
+                <p data-ar="مستوى أساسي — السوشيال والطباعة" data-en="Basic level — social and print layouts">مستوى أساسي — السوشيال والطباعة</p>
+            </div>
+            <div class="tool-card fade-in">
+                <div class="tool-icon">🤖</div>
+                <h4 data-ar="أدوات فيديو AI" data-en="AI video tools">أدوات فيديو AI</h4>
+                <p data-ar="مشاهد متحركة وموشن" data-en="Generated scenes and motion sequences">مشاهد متحركة وموشن</p>
+            </div>
+            <div class="tool-card fade-in">
+                <div class="tool-icon">🖼️</div>
+                <h4 data-ar="أدوات صور AI" data-en="AI image tools">أدوات صور AI</h4>
+                <p data-ar="صور مفاهيمية وصور منتج" data-en="Concept visuals and product imagery">صور مفاهيمية وصور منتج</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience">
+        <div class="section-header fade-in">
+            <h2 data-ar="أعمل مع <span>الجميع</span>" data-en="Work I take on, for people at <span>any size</span>">أعمل مع <span>الجميع</span></h2>
+        </div>
+        <div class="audience-grid">
+            <div class="audience-item fade-in">
+                <div class="icon"></div>
+                <h4 data-ar="أفراد" data-en="Individuals">أفراد</h4>
+            </div>
+            <div class="audience-item fade-in">
+                <div class="icon">🚀</div>
+                <h4 data-ar="رواد أعمال" data-en="Entrepreneurs">رواد أعمال</h4>
+            </div>
+            <div class="audience-item fade-in">
+                <div class="icon">💡</div>
+                <h4 data-ar="شركات ناشئة" data-en="Startups">شركات ناشئة</h4>
+            </div>
+            <div class="audience-item fade-in">
+                <div class="icon">🏢</div>
+                <h4 data-ar="شركات" data-en="Companies">شركات</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content fade-in">
+            <h2 data-ar="قولي لي <span>احتياجك</span>" data-en="Tell me what you <span>need</span>">قولي لي <span>احتياجك</span></h2>
+            <p data-ar="ابعتي رسالة قصيرة فيها المشروع، الصيغة اللي محتاجاها، والديدلاين — وهرد عليكِ بخطة وسعر." data-en="Send a short message with the project, the format you need, and your deadline — and I'll come back with a plan and a price.">ابعتي رسالة قصيرة فيها المشروع، الصيغة اللي محتاجاها، والديدلاين — وهرد عليكِ بخطة وسعر.</p>
+            <div class="contact-links">
+                <a href="mailto:mostafelarabe69@gmail.com" class="contact-link">
+                    <span class="icon">📧</span>
+                    <span>mostafelarabe69@gmail.com</span>
+                </a>
+                <a href="https://youtu.be/MGQ3kE4M2HY?si=81hT2TBFr3uih3sV" target="_blank" class="contact-link">
+                    <span class="icon"></span>
+                    <span>YouTube</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="icon">💬</span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="icon">🎨</span>
+                    <span>Behance</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#" class="logo">Sara Mohamed</a>
+        <p data-ar="مصممة إبداعية رقمية — تصميم، فيديو، ومستندات" data-en="Digital Creative Freelancer — Design, video, and documents">مصممة إبداعية رقمية — تصميم، فيديو، ومستندات</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">© 2026 Sara Mohamed. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Language toggle
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'ar';
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            langToggle.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
